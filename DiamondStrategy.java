@@ -1,27 +1,16 @@
-package com.paypal;
-
 import java.util.List;
 
-public class DiamondStrategy implements Strategy{
+public abstract class DiamondStrategy implements Strategy {
 
-    DiamondGame game;
-    Player opponent;
-    List<Card> cardsPlayedByOpponentUntilNow;
-    List<Card> diamondsPlayed;
+    protected List<Card> cardsPlayedByOpponentUntilNow;
+    protected List<Card> diamondsPlayed;
 
     public void addAnOpponentBidMade(Card opponentBid) {
-
+        cardsPlayedByOpponentUntilNow.add(opponentBid);
     }
 
     public void addADiamondPlayed(Card diamondPlayed) {
-
+        diamondsPlayed.add(diamondPlayed);
     }
 
-
-    @Override
-    public Card getNextMove(Hand hand) {
-        cardsPlayedByOpponentUntilNow.add(game.showBid(opponent));
-        diamondsPlayed = game.getDiamondsPlayed();
-        return null;
-    }
 }

@@ -1,21 +1,33 @@
-package com.paypal;
-
 public class Player {
-    Hand hand;
-    double points;
-    Card bid;
-    Strategy strategy;
-    String name;
-    public Player(Hand hand, Strategy strategy, String name) {
+    private Hand hand;
+    private double points;
+    private DiamondStrategy strategy;
+    private String name;
+    private Card lastDiamondPlayed;
+    private Card lastBidPlacedByOtherPlayer;
+
+    public void setLastDiamondPlayed(Card lastDiamondPlayed) {
+        this.lastDiamondPlayed = lastDiamondPlayed;
+    }
+
+    public void setLastBidPlacedByOtherPlayer(Card lastBidPlacedByOtherPlayer) {
+        this.lastBidPlacedByOtherPlayer = lastBidPlacedByOtherPlayer;
+    }
+
+
+    public Player(Hand hand, DiamondStrategy strategy, String name) {
         this.hand = hand;
         this.points = 0D;
-        this.bid = null;
         this.strategy = strategy;
         this.name = name;
     }
 
+    public double getPoints() {
+        return points;
+    }
+
     public void placeBid(Card card) {
-        bid = card;
+        hand.removeCard(card);
     }
 
     public void awardPoints(double points) {
@@ -23,11 +35,15 @@ public class Player {
     }
 
     private Card getCardToBid() {
+        strategy.addADiamondPlayed(lastDiamondPlayed);
+        strategy.addAnOpponentBidMade(lastBidPlacedByOtherPlayer);
         return strategy.getNextMove(hand);
     }
 
     public Card getBid() {
-        return bid;
+        Card bidCard = getCardToBid();
+        placeBid(bidCard);
+        return bidCard;
     }
 
     public Boolean equals(Player player) {

@@ -1,12 +1,10 @@
-package com.paypal;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Hand {
-    List<Card> cardList;
+    private List<Card> cardList;
 
-    public Hand(List<Card> cardList) {
+    protected Hand(List<Card> cardList) {
         this.cardList = cardList;
     }
 
@@ -14,10 +12,16 @@ public abstract class Hand {
         cardList.add(card);
     }
 
-    public Card removeCard(Card card) {
+    protected Card removeCard(Card card) {
         if (cardList.remove(card)) {
             return card;
         }
         return null;
+    }
+
+    protected Card removeTop() {
+        Card card = cardList.get(0);
+        cardList.remove(card);
+        return card;
     }
 }
