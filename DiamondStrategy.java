@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DiamondStrategy implements Strategy {
 
-    protected List<Card> cardsPlayedByOpponentUntilNow;
-    protected List<Card> diamondsPlayed;
+    protected List<Card> cardsPlayedByOpponentUntilNow = new ArrayList<> ();
+    protected List<Card> diamondsPlayed = new ArrayList<> ();
 
     public void addAnOpponentBidMade(Card opponentBid) {
         cardsPlayedByOpponentUntilNow.add(opponentBid);
@@ -12,5 +13,6 @@ public abstract class DiamondStrategy implements Strategy {
     public void addADiamondPlayed(Card diamondPlayed) {
         diamondsPlayed.add(diamondPlayed);
     }
+
 
 }

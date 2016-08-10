@@ -34,14 +34,14 @@ public class Player {
         this.points += points;
     }
 
-    private Card getCardToBid() {
+    private Card getCardToBid(Card bidOn) {
         strategy.addADiamondPlayed(lastDiamondPlayed);
         strategy.addAnOpponentBidMade(lastBidPlacedByOtherPlayer);
-        return strategy.getNextMove(hand);
+        return strategy.getNextMove(hand, bidOn);
     }
 
-    public Card getBid() {
-        Card bidCard = getCardToBid();
+    public Card getBid(Card bidOn) {
+        Card bidCard = getCardToBid(bidOn);
         placeBid(bidCard);
         return bidCard;
     }
