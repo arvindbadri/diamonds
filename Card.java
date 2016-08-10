@@ -1,3 +1,5 @@
+package com.paypal;
+
 
 public class Card {
     private Suit suit;
@@ -12,7 +14,7 @@ public class Card {
     }
     
     public String getSuit() {
-    	return this.suit;
+    	return this.suit.toString();
     }
 
     public enum Face {

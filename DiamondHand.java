@@ -1,3 +1,5 @@
+package com.paypal;
+
 import java.util.List;
 
 public class DiamondHand extends Hand{

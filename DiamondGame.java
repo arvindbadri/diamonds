@@ -1,4 +1,8 @@
+package com.paypal;
+
 import java.util.List;
+
+import com.paypal.Card.Suit;
 
 public class DiamondGame {
     Player user;
@@ -15,8 +19,8 @@ public class DiamondGame {
         this.user = user;
         this.computer = computer;
         this.diamondList = Pack.getAllOfSuit(Suit.DIAMONDS);
-        Hand handOfHearts = new Hand(Pack.getAllOfSuit(Suit.HEARTS));
-        Hand handOfSpades = new Hand(Pack.getAllOfSuit(Suit.SPADES));
+        Hand handOfHearts = new DiamondHand(Pack.getAllOfSuit(Suit.HEARTS));
+        Hand handOfSpades = new DiamondHand(Pack.getAllOfSuit(Suit.SPADES));
     }
 
     void conductGame() {

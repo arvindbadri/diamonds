@@ -1,3 +1,5 @@
+package com.paypal;
+
 public class Player {
     Hand hand;
     double points;
