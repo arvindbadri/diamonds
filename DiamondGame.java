@@ -14,6 +14,9 @@ public class DiamondGame {
         //TODO: insert code to populate diamondList
         this.user = user;
         this.computer = computer;
+        this.diamondList = Pack.getAllOfSuit(Suit.DIAMONDS);
+        Hand handOfHearts = new Hand(Pack.getAllOfSuit(Suit.HEARTS));
+        Hand handOfSpades = new Hand(Pack.getAllOfSuit(Suit.SPADES));
     }
 
     void conductGame() {
